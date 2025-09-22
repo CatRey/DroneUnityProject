@@ -55,13 +55,13 @@ public class Building : MonoBehaviour
         if (nowPrefab != null)
         {
             var ground = new Plane(Vector3.up,pointPlace);//Создаем плоскость
-            Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition); 
-            if(ground.Raycast(ray, out float position))
+            Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+            if (ground.Raycast(ray, out float position))
             {
                 Vector3 nowPosition = ray.GetPoint(position); //Наша позиция
                 nowPrefab.transform.position = nowPosition; //Задаем для объекта
                 bool inPlace = true; // Правильно ли расположено
-                if(Mathf.Abs(nowPosition.x-target.x)>0.15f && Mathf.Abs(nowPosition.z - target.z) > 0.15f)
+                if (Mathf.Abs(nowPosition.x - target.x) > 0.15f || Mathf.Abs(nowPosition.z - target.z) > 0.15f)
                 {
                     inPlace = false; //Если не рядом с целевой точкой - выключаем
                 }
